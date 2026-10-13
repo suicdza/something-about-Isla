@@ -1,6 +1,19 @@
-/* =================================
-   GENERAL
-================================= */
+```css
+/* ==============================
+   SOMETHING ABOUT ISLA
+   Dark romantic / emo aesthetic
+   ============================== */
+
+:root {
+    --background: #0B090C;
+    --background-soft: #100C11;
+    --pink-dark: #6E394A;
+    --pink: #B78391;
+    --pink-light: #D7B5BE;
+    --paper: #E8DED8;
+    --text: #EEE5E8;
+    --text-muted: #A79AA2;
+}
 
 * {
     box-sizing: border-box;
@@ -8,648 +21,410 @@
     padding: 0;
 }
 
-html,
-body {
-    width: 100%;
+html {
     min-height: 100%;
+    background: var(--background);
 }
 
 body {
-    background: #0B090C;
-    color: #EEE5E8;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
     font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
-
-/* =================================
-   SCREEN SYSTEM
-================================= */
+button {
+    font: inherit;
+}
 
 .screen {
-    position: fixed;
-    inset: 0;
-
+    display: none;
+    position: relative;
+    min-height: 100vh;
     width: 100%;
-    height: 100vh;
-
-    display: flex;
+    padding: 32px 22px;
     align-items: center;
     justify-content: center;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .screen.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
+    animation: screenFadeIn 1s ease both;
+}
+
+@keyframes screenFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 
-/* =================================
+/* ==============================
    COVER
-================================= */
+   ============================== */
 
 #cover {
-    position: relative;
-
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(110, 57, 74, 0.16),
-            transparent 38%
+            ellipse at 50% 43%,
+            rgba(110, 57, 74, 0.12),
+            transparent 58%
         ),
-        #0B090C;
+        var(--background);
 }
-
-#cover::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: 0.08;
-
-    background-image:
-        repeating-radial-gradient(
-            circle at 0 0,
-            transparent 0,
-            transparent 1px,
-            rgba(255, 255, 255, 0.15) 1px,
-            rgba(255, 255, 255, 0.15) 2px
-        );
-
-    background-size: 5px 5px;
-}
-
-#cover::after {
-    content: "";
-
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    background: rgba(183, 131, 145, 0.06);
-
-    filter: blur(90px);
-
-    pointer-events: none;
-}
-
-
-/* =================================
-   COVER CONTENT
-================================= */
 
 .cover-content {
-    position: relative;
-    z-index: 2;
-
-    width: min(700px, 90%);
-
+    width: 100%;
+    max-width: 850px;
     text-align: center;
-
     display: flex;
-    flex-direction: column;
     align-items: center;
-
-    animation: coverAppear 2s ease forwards;
+    justify-content: center;
+    flex-direction: column;
+    animation: coverAppear 1.5s ease both;
 }
 
+@keyframes coverAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 
-/* =================================
-   FOR
-================================= */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .cover-for {
+    color: var(--pink);
     font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.58rem;
-
-    letter-spacing: 0.32rem;
-
-    text-transform: lowercase;
-
-    color: #A8959C;
-
-    opacity: 0.75;
-
-    margin-bottom: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.38em;
+    line-height: 1.8;
+    margin-bottom: 32px;
 }
-
-
-/* =================================
-   ISLA
-================================= */
-
-.cover-name {
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: clamp(4.2rem, 10vw, 7.5rem);
-
-    font-weight: 400;
-
-    font-style: normal;
-
-    letter-spacing: 0.12rem;
-
-    line-height: 0.9;
-
-    color: #EEE5E8;
-
-    margin-bottom: 1.8rem;
-
-    text-shadow:
-        0 0 30px rgba(183, 131, 145, 0.08);
-}
-
-
-/* =================================
-   A LOVE LETTER
-================================= */
 
 .cover-content h1 {
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-
+    color: var(--text);
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
     font-weight: 400;
-
-    font-style: italic;
-
-    letter-spacing: 0.02em;
-
-    line-height: 1;
-
-    color: #EEE5E8;
-
-    margin-bottom: 2.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+    max-width: 100%;
+    text-wrap: balance;
 }
 
-
-/* =================================
-   MAIN PHRASE
-================================= */
+.isla-title {
+    display: inline-block;
+    color: var(--pink);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    text-shadow: 0 0 24px rgba(183, 131, 145, 0.12);
+}
 
 .cover-main {
-    font-size: clamp(1.15rem, 2vw, 1.5rem);
-
+    color: var(--pink-light);
+    font-size: clamp(0.95rem, 2.4vw, 1.15rem);
     font-style: italic;
-
-    color: #D7B5BE;
-
-    margin-bottom: 1.6rem;
+    margin-top: 25px;
+    letter-spacing: 0.015em;
 }
-
-
-/* =================================
-   SUBTITLE
-================================= */
 
 .cover-subtitle {
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.76rem;
-
-    line-height: 1.9;
-
-    letter-spacing: 0.08rem;
-
-    color: #A8959C;
-
-    margin-bottom: 3rem;
+    color: var(--text-muted);
+    font-size: clamp(0.83rem, 2vw, 0.95rem);
+    font-weight: 400;
+    line-height: 2;
+    margin-top: 30px;
+    letter-spacing: 0.015em;
 }
 
-
-/* =================================
-   ENTER BUTTON
-================================= */
-
 #enter-button {
-    border: 1px solid rgba(215, 181, 190, 0.45);
-
+    margin-top: 45px;
+    padding: 13px 35px;
     background: transparent;
-
-    color: #EEE5E8;
-
-    padding: 0.9rem 2.8rem;
-
+    color: var(--pink-light);
+    border: 1px solid rgba(183, 131, 145, 0.5);
     font-family: Arial, Helvetica, sans-serif;
-
     font-size: 0.68rem;
-
-    letter-spacing: 0.35rem;
-
+    letter-spacing: 0.28em;
     cursor: pointer;
-
     transition:
-        background 0.4s ease,
-        color 0.4s ease,
-        border-color 0.4s ease,
-        transform 0.4s ease;
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        letter-spacing 0.35s ease;
 }
 
 #enter-button:hover {
-    background: #D7B5BE;
-
-    color: #0B090C;
-
-    border-color: #D7B5BE;
-
-    transform: translateY(-3px);
+    background: rgba(110, 57, 74, 0.2);
+    border-color: var(--pink);
+    color: #FFFFFF;
+    letter-spacing: 0.36em;
 }
 
-
-/* =================================
-   DATE
-================================= */
+#enter-button:focus-visible,
+#seal:focus-visible {
+    outline: 1px solid var(--pink-light);
+    outline-offset: 5px;
+}
 
 .cover-date {
-    position: absolute;
-
-    top: calc(100% + 3rem);
-
+    color: #766771;
     font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.55rem;
-
-    letter-spacing: 0.3rem;
-
-    color: #6E394A;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    margin-top: 60px;
 }
 
 
-/* =================================
+/* ==============================
    ENVELOPE SCREEN
-================================= */
+   ============================== */
 
 #envelope-screen {
-    flex-direction: column;
-
     background:
         radial-gradient(
-            circle at center,
+            ellipse at center,
             rgba(110, 57, 74, 0.10),
-            transparent 45%
+            transparent 65%
         ),
-        #0B090C;
+        var(--background);
 }
-
-
-/* =================================
-   ENVELOPE INTRO
-================================= */
 
 .envelope-intro {
-    position: absolute;
-
-    top: 15%;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.68rem;
-
-    letter-spacing: 0.18rem;
-
-    color: #A8959C;
-
-    text-transform: lowercase;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 45px;
 }
-
-
-/* =================================
-   ENVELOPE
-================================= */
 
 .envelope {
     position: relative;
-
-    width: min(440px, 78vw);
-
-    aspect-ratio: 1.55;
-
-    cursor: pointer;
-
-    filter:
-        drop-shadow(
-            0 25px 50px rgba(0, 0, 0, 0.55)
-        );
-
-    transition: transform 0.6s ease;
+    width: min(330px, 78vw);
+    height: min(215px, 51vw);
+    min-height: 165px;
+    perspective: 1000px;
+    isolation: isolate;
 }
 
-.envelope:hover {
-    transform: translateY(-8px);
-}
-
-
-.envelope-back,
-.envelope-front {
+.envelope-back {
     position: absolute;
-
     inset: 0;
-
-    background: #24151B;
-
-    border: 1px solid #6E394A;
+    z-index: 1;
+    background: #24171F;
+    border: 1px solid rgba(183, 131, 145, 0.35);
 }
 
-
-.envelope-front {
-    z-index: 3;
-
-    clip-path: polygon(
-        0 0,
-        50% 55%,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+.envelope-letter {
+    position: absolute;
+    z-index: 2;
+    left: 8%;
+    bottom: 5%;
+    width: 84%;
+    height: 90%;
+    background: var(--paper);
+    transition: transform 1s ease;
 }
 
-
-/* =================================
-   ENVELOPE FLAP
-================================= */
+.envelope.open .envelope-letter {
+    transform: translateY(-65%);
+}
 
 .envelope-flap {
     position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 65%;
-
-    background: #321C25;
-
-    border: 1px solid #7B4658;
-
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
-    transform-origin: top center;
-
+    inset: 0;
     z-index: 5;
-
-    transition:
-        transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #4A2837;
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    transform-origin: top center;
+    transition: transform 0.65s ease;
 }
-
-
-/* =================================
-   HEART SEAL
-================================= */
-
-.seal {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 10;
-
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    border: 1px solid #D7B5BE;
-
-    background: #6E394A;
-
-    color: #EEE5E8;
-
-    font-size: 1.5rem;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.4s ease,
-        background 0.4s ease;
-}
-
-.seal:hover {
-    transform:
-        translate(-50%, -50%)
-        scale(1.1);
-
-    background: #8C5062;
-}
-
-
-/* =================================
-   OPEN HINT
-================================= */
-
-.open-hint {
-    margin-top: 2rem;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.58rem;
-
-    letter-spacing: 0.25rem;
-
-    text-transform: uppercase;
-
-    color: #6E394A;
-}
-
-
-/* =================================
-   LETTER SCREEN
-================================= */
-
-#letter-screen {
-    position: absolute;
-
-    height: auto;
-    min-height: 100vh;
-
-    padding: 7rem 1.5rem;
-
-    align-items: flex-start;
-
-    overflow-y: auto;
-
-    background:
-        radial-gradient(
-            circle at top center,
-            rgba(110, 57, 74, 0.12),
-            transparent 40%
-        ),
-        #0B090C;
-}
-
-
-/* =================================
-   LETTER
-================================= */
-
-.letter {
-    width: min(720px, 100%);
-
-    padding:
-        4rem
-        clamp(1.8rem, 7vw, 5rem);
-
-    border-left:
-        1px solid rgba(183, 131, 145, 0.25);
-
-    border-right:
-        1px solid rgba(183, 131, 145, 0.25);
-
-    color: #E8DEE1;
-
-    font-size: 1rem;
-
-    line-height: 2;
-
-    animation:
-        letterAppear 1.5s ease forwards;
-}
-
-
-.letter p {
-    margin-bottom: 2rem;
-}
-
-
-.letter-name {
-    color: #D7B5BE;
-
-    font-size: 1.3rem;
-
-    font-style: italic;
-
-    margin-top: 3rem;
-}
-
-
-.signature {
-    color: #A8959C;
-
-    font-style: italic;
-
-    margin-top: 3rem;
-}
-
-
-/* =================================
-   ANIMATIONS
-================================= */
-
-@keyframes coverAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(18px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-@keyframes letterAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-/* =================================
-   ENVELOPE OPENING
-================================= */
 
 .envelope.open .envelope-flap {
-    transform:
-        rotateX(180deg);
+    transform: rotateX(180deg);
+    z-index: 1;
 }
 
-.envelope.open {
-    transform:
-        translateY(-15px);
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: #321D29;
+    clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+    border-bottom: 1px solid rgba(183, 131, 145, 0.3);
+    pointer-events: none;
+}
+
+.envelope-seal {
+    position: absolute;
+    z-index: 6;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 43px;
+    height: 43px;
+    border: 1px solid rgba(215, 181, 190, 0.6);
+    border-radius: 50%;
+    background: var(--pink-dark);
+    color: var(--pink-light);
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        opacity 0.4s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.envelope-seal:hover {
+    background: #84485B;
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+.envelope.open .envelope-seal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.open-hint {
+    color: #8E7782;
+    font-size: 0.78rem;
+    font-style: italic;
+    margin-top: 35px;
+    letter-spacing: 0.06em;
 }
 
 
-/* =================================
-   MOBILE
-================================= */
+/* ==============================
+   LETTER SCREEN
+   ============================== */
 
-@media (max-width: 600px) {
+#letter-screen {
+    align-items: flex-start;
+    justify-content: flex-start;
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(110, 57, 74, 0.09),
+            transparent 55%
+        ),
+        var(--background);
+    padding: 70px 24px 90px;
+    overflow-y: auto;
+}
 
-    .cover-content h1 {
-        font-size: 2rem;
+.letter-content {
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto;
+    color: var(--text);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 2;
+    letter-spacing: 0.005em;
+    animation: letterAppear 1.4s ease both;
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
     }
 
-    .cover-name {
-        font-size: 4.2rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        letter-spacing: 0.08rem;
+.letter-content p {
+    margin-bottom: 24px;
+}
+
+.letter-content p:first-child {
+    color: var(--pink-light);
+    font-style: italic;
+    margin-bottom: 38px;
+}
+
+.letter-signature {
+    color: var(--pink);
+    font-style: italic;
+    margin-top: 42px;
+}
+
+
+/* ==============================
+   SMALL SCREENS
+   ============================== */
+
+@media (max-width: 600px) {
+    .screen {
+        padding: 28px 22px;
     }
 
     .cover-for {
-        font-size: 0.52rem;
+        font-size: 0.59rem;
+        letter-spacing: 0.28em;
+        margin-bottom: 27px;
+    }
+
+    .cover-content h1 {
+        font-size: clamp(2rem, 9vw, 3rem);
+        line-height: 1.25;
+    }
+
+    .cover-main {
+        margin-top: 22px;
     }
 
     .cover-subtitle {
-        font-size: 0.68rem;
+        margin-top: 25px;
+        line-height: 1.9;
+    }
+
+    #enter-button {
+        margin-top: 38px;
+    }
+
+    .cover-date {
+        margin-top: 48px;
     }
 
     .envelope-intro {
-        text-align: center;
-
-        width: 90%;
+        font-size: 0.88rem;
+        margin-bottom: 38px;
     }
 
-    .letter {
-        padding:
-            3rem
-            1.5rem;
-
-        font-size: 0.95rem;
+    #letter-screen {
+        padding: 48px 25px 70px;
     }
 
+    .letter-content {
+        line-height: 1.9;
+    }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+```
