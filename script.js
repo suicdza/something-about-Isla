@@ -1,61 +1,41 @@
-// =================================
-// ELEMENTS
-// =================================
+```javascript
+const cover = document.getElementById("cover");
+const envelopeScreen = document.getElementById("envelope-screen");
+const letterScreen = document.getElementById("letter-screen");
 
-const cover =
-    document.getElementById("cover");
-
-const envelopeScreen =
-    document.getElementById("envelope-screen");
-
-const letterScreen =
-    document.getElementById("letter-screen");
-
-const enterButton =
-    document.getElementById("enter-button");
-
-const envelope =
-    document.getElementById("envelope");
-
-const seal =
-    document.getElementById("seal");
+const enterButton = document.getElementById("enter-button");
+const envelope = document.getElementById("envelope");
+const seal = document.getElementById("seal");
 
 
-// =================================
 // ENTER BUTTON
-// =================================
 
-enterButton.addEventListener("click", () => {
+enterButton.addEventListener("click", function () {
 
     cover.classList.remove("active");
 
-    setTimeout(() => {
-
+    setTimeout(function () {
         envelopeScreen.classList.add("active");
-
     }, 700);
 
 });
 
 
-// =================================
 // OPEN ENVELOPE
-// =================================
 
-seal.addEventListener("click", () => {
+seal.addEventListener("click", function () {
 
     envelope.classList.add("open");
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         envelopeScreen.classList.remove("active");
 
-        setTimeout(() => {
-
+        setTimeout(function () {
             letterScreen.classList.add("active");
-
         }, 700);
 
     }, 1000);
 
 });
+```
